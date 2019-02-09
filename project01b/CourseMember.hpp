@@ -13,6 +13,10 @@
 
 class CourseMember
 {
+protected:
+    int id_; /** the CourseMember's ID */
+    std::string first_name_; /** the CourseMember's first name */
+    std::string last_name_; /** the CourseMember's last name */
 public:
     /** Parameterized constructor
      @param id the student's unique identifier
@@ -20,8 +24,7 @@ public:
      @param last the student's last name
      */
     CourseMember(int id, std::string first, std::string last);
-    
-    
+        
     //********** Accessor Methods ****************
     
     /** @return returns id_; */
@@ -32,12 +35,6 @@ public:
     
     /** @return returns last_name_ */
     std::string getLastName() const;
-    
-private:
-    int id_; /** the CourseMember's ID */
-    std::string first_name_; /** the CourseMember's first name */
-    std::string last_name_; /** the CourseMember's last name */
-    
     
 }; //end CourseMember
 
