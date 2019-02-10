@@ -23,6 +23,8 @@
 #include <iostream>
 #include "CourseMember.hpp"
 #include "Student.hpp"
+#include "Instructor.hpp"
+#include "TeachingAssistant.hpp"
 using namespace std;
 
 int main(){
@@ -30,11 +32,22 @@ int main(){
     cout << nsz.getFirstName() << endl;
     cout << nsz.getLastName() << endl;
     cout << nsz.getID() << endl;
+    coud << nsz.getGPA()
 
     Student jimmy(6,"Jimmy","Jerkface");
     cout << jimmy.getFirstName() << endl;
     cout << jimmy.getLastName() << endl;
     cout << jimmy.getID() << endl;
+    
+    Instructor Tommala(6,"Tommala","Professor");
+    cout << Tommala.getFirstName() << endl;
+    cout << Tommala.getLastName() << endl;
+    cout << Tommala.getID() << endl;
+    
+    TeachingAssistant Edberg(6,"Edberg","TA");
+    cout << Edberg.getFirstName() << endl;
+    cout << Edberg.getLastName() << endl;
+    cout << Edberg.getID() << endl;
 
     return 0;
 }
