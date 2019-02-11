@@ -14,11 +14,11 @@
 #include "Student.hpp"
 
 
-enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, BOTH};
 
 class TeachingAssistant: public Student
 {
 public:
+    enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, BOTH};
     TeachingAssistant(int id, std::string first, std::string last);
     int getHours() const;
     ta_role getRole() const;
