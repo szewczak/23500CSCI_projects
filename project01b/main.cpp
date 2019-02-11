@@ -20,34 +20,76 @@
 // - Instructor will be a derived class of CourseMember
 */
 
+// #include <iostream>
+// #include "CourseMember.hpp"
+// #include "Student.hpp"
+// #include "Instructor.hpp"
+// #include "TeachingAssistant.hpp"
+// using namespace std;
+
+// int main(){
+//     CourseMember nsz(5,"nick","szewczak");
+//     cout << nsz.getFirstName() << endl;
+//     cout << nsz.getLastName() << endl;
+//     cout << nsz.getID() << endl;
+//     coud << nsz.getGPA()
+
+//     Student jimmy(6,"Jimmy","Jerkface");
+//     cout << jimmy.getFirstName() << endl;
+//     cout << jimmy.getLastName() << endl;
+//     cout << jimmy.getID() << endl;
+    
+//     Instructor Tommala(6,"Tommala","Professor");
+//     cout << Tommala.getFirstName() << endl;
+//     cout << Tommala.getLastName() << endl;
+//     cout << Tommala.getID() << endl;
+    
+//     TeachingAssistant Edberg(6,"Edberg","TA");
+//     cout << Edberg.getFirstName() << endl;
+//     cout << Edberg.getLastName() << endl;
+//     cout << Edberg.getID() << endl;
+
+//     return 0;
+// }
+
+
 #include <iostream>
+
 #include "CourseMember.hpp"
 #include "Student.hpp"
-#include "Instructor.hpp"
 #include "TeachingAssistant.hpp"
-using namespace std;
+#include "Instructor.hpp"
 
-int main(){
-    CourseMember nsz(5,"nick","szewczak");
-    cout << nsz.getFirstName() << endl;
-    cout << nsz.getLastName() << endl;
-    cout << nsz.getID() << endl;
-    coud << nsz.getGPA()
+int main()
+{
+    CourseMember member1(1111, "Bob", "Chen");
+    std::cout << member1.getID() << " " << member1.getFirstName() << " " << member1.getLastName() << std::endl;
 
-    Student jimmy(6,"Jimmy","Jerkface");
-    cout << jimmy.getFirstName() << endl;
-    cout << jimmy.getLastName() << endl;
-    cout << jimmy.getID() << endl;
-    
-    Instructor Tommala(6,"Tommala","Professor");
-    cout << Tommala.getFirstName() << endl;
-    cout << Tommala.getLastName() << endl;
-    cout << Tommala.getID() << endl;
-    
-    TeachingAssistant Edberg(6,"Edberg","TA");
-    cout << Edberg.getFirstName() << endl;
-    cout << Edberg.getLastName() << endl;
-    cout << Edberg.getID() << endl;
+    CourseMember member2(2222, "Bob", "Chen");
+    std::cout << member2.getID() << " " << member1.getFirstName() << " " << member1.getLastName() << std::endl;
+
+    CourseMember member3(3333, "Bob", "Chen");
+    std::cout << member3.getID() << " " << member1.getFirstName() << " " << member1.getLastName() << std::endl;
+
+    CourseMember member4(4444, "Bob", "Chen");
+    std::cout << member4.getID() << " " << member1.getFirstName() << " " << member1.getLastName() << std::endl;
+
+    Student s1(0001, "John", "Zhang");
+    s1.setMajor("Education");
+    s1.setGpa(3.7);
+    std::cout << s1.getID() << " " << s1.getMajor() << " " << s1.getGpa() << std::endl;
+
+    TeachingAssistant t1(9876, "David", "Yuen");
+    t1.setMajor("Computer Science");
+    t1.setGpa(3.3);
+    t1.setHours(4);
+    t1.setRole(LAB_ASSISTANT);
+    std::cout << t1.getID() << " " << t1.getMajor() << " " << t1. getRole() << std::endl;
+
+    Instructor i1(1000, "AAAA", "SSSS");
+    i1.setOffice("HN1001E");
+    i1.setContact("fuckyoufuckyou@fuck.com");
+    std::cout << i1.getID() << " " << i1.getOffice() << " " << i1.getContact() << std::endl;
 
     return 0;
 }

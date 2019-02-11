@@ -13,13 +13,15 @@
 #include "CourseMember.hpp"
 #include "Student.hpp"
 
+
+enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, BOTH};
+
 class TeachingAssistant: public Student
 {
-    enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, BOTH};
 public:
     TeachingAssistant(int id, std::string first, std::string last);
     int getHours() const;
-    ta_role _get_current_locale() const;
+    ta_role getRole() const;
     void setHours(const int hours);
     void setRole(const ta_role role);
 private:
