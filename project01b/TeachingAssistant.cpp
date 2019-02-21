@@ -8,6 +8,7 @@
 
 #include "TeachingAssistant.hpp"
 
+
 TeachingAssistant::TeachingAssistant(int id, std::string first, std::string last):Student(id,first,last){
     role_ = LAB_ASSISTANT; //"You may assume for initialization purposes that the default role is LAB_ASSISTANT"
 }
@@ -16,7 +17,7 @@ int TeachingAssistant::getHours() const{
     return hours_per_week_;
 }
 
-TeachingAssistant::ta_role TeachingAssistant::getRole() const{
+ta_role TeachingAssistant::getRole() const{
     return role_;
 }
 

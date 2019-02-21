@@ -84,7 +84,7 @@ int main()
     t1.setGpa(3.3);
     t1.setHours(4);
     t1.setRole(LAB_ASSISTANT);
-    std::cout << t1.getID() << " " << t1.getMajor() << " " << t1. getRole() << std::endl;
+    std::cout << t1.getID() << " " << t1.getMajor() << " !!!!!!!!!!!>" << t1. getRole() << std::endl;
 
     Instructor i1(1000, "AAAA", "SSSS");
     i1.setOffice("HN1001E");
