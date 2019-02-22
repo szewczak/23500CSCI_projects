@@ -3,6 +3,8 @@
 
 //  Modified by Tiziana Ligorio for CSCI 235 Hunter college 2019
 
+
+
 /** Implementation file for the class ArrayBag.
  @file ArrayBag.cpp */
 
@@ -127,8 +129,7 @@ std::vector<T> ArrayBag<T>::toVector() const
 }  // end toVector
 
 /**
- @return a new ArrayBag that contains all elements from this bag(items_) and as many elements from arg a_bag as space allows (max size of starting bag) Duplicate items are allowed
- Note: Because ArrayBag is of fixed size, bagUnion will copy the contents of the calling bag first and then whatever fits from the argument a_bag 
+ @return a new ArrayBag that contains all elements from this bag(items_) and as many elements from arg a_bag as space allows (max size of starting bag) Duplicate items are allowed Note: Because ArrayBag is of fixed size, bagUnion will copy the contents of the calling bag first and then whatever fits from the argument a_bag 
  **/
 template<class T>
 ArrayBag<T> ArrayBag<T>::bagUnion(const ArrayBag<T>& a_bag) const{
@@ -144,11 +145,7 @@ ArrayBag<T> ArrayBag<T>::bagUnion(const ArrayBag<T>& a_bag) const{
 }
 
 /**
- @return a new ArrayBag that contains the intersection of the contents
- of this bag and those of the argument a_bag. This intersection does
- not contain duplicates (e.g. every element occurring in BOTH bags will
- be found only once in the intersection, no matter how many
- occurrences in the original bags) as in set intersection A ∩ B
+ @return a new ArrayBag that contains the intersection of the contents of this bag and those of the argument a_bag. This intersection does not contain duplicates (e.g. every element occurring in BOTH bags will be found only once in the intersection, no matter how many occurrences in the original bags) as in set intersection A ∩ B
  */
 template<class T>
 ArrayBag<T> ArrayBag<T>::bagIntersectionNoDuplicates(const ArrayBag<T>& a_bag) const{
@@ -156,13 +153,13 @@ ArrayBag<T> ArrayBag<T>::bagIntersectionNoDuplicates(const ArrayBag<T>& a_bag) c
    std::vector<T> a_bag_vector = a_bag.toVector();
 
    for(int i = 0; i < item_count_; i++){
-      if(!new_bag.contains(items_[i])){
+      if(!new_bag.contains(items_[i]) && a_bag.contains(items_[i])){
          new_bag.add(items_[i]);
       }
    }
 
    for(int i = 0; i < a_bag.getCurrentSize(); i++){
-      if(!new_bag.contains(a_bag_vector[i])){
+      if(!new_bag.contains(a_bag_vector[i]) && contains(a_bag_vector[i])){
          new_bag.add(a_bag_vector[i]);
       }
    }
@@ -172,8 +169,7 @@ ArrayBag<T> ArrayBag<T>::bagIntersectionNoDuplicates(const ArrayBag<T>& a_bag) c
 
 /**
  @param a_bag to be subtracted from this bag
- @return a new ArrayBag that contains only those items that occur in this
- bag or in a_bag but not in both, and it does not contain duplicates
+ @return a new ArrayBag that contains only those items that occur in this bag or in a_bag but not in both, and it does not contain duplicates
  */
 template<class T>
 ArrayBag<T> ArrayBag<T>::bagDifference(const ArrayBag<T>& a_bag) const{
@@ -222,8 +218,7 @@ ArrayBag<T> ArrayBag<T>::bagIntersection(const ArrayBag<T>& a_bag) const{
 
 /**
  @param target to be found in items_
- @return either the index target in the array items_ or -1,
- if the array does not containthe target.
+ @return either the index target in the array items_ or -1, if the array does not containthe target.
  **/
 template<class T>
 int ArrayBag<T>::getIndexOf(const T& target) const

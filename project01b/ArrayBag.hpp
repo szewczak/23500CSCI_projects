@@ -76,12 +76,12 @@ public:
  */
 ArrayBag<T> bagIntersectionNoDuplicates(const ArrayBag<T>& a_bag) const;
 
-    /**
-     @param a_bag to be subtracted from this bag
-    @return a new ArrayBag that contains only those items that occur in this
-    bag or in a_bag but not in both, and it does not contain duplicates
-    */
-    ArrayBag<T> bagDifference(const ArrayBag<T>& a_bag) const;
+/**
+ @param a_bag to be subtracted from this bag
+ @return a new ArrayBag that contains only those items that occur in this
+ bag or in a_bag but not in both, and it does not contain duplicates
+ */
+ArrayBag<T> bagDifference(const ArrayBag<T>& a_bag) const;
     
 /**
  @param a_bag to be intersected with the contents of this bag
