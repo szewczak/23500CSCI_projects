@@ -10,9 +10,11 @@
 class BagTest{
 private:
 ArrayBag<CourseMember> bag_; 
-ArrayBag <CourseMember> createBagFromInput(std::string input_file);
+// ArrayBag <CourseMember> createBagFromInput(std::string input_file);
 
 public:
+
+BagTest();
 
 /**
  @pre the input file is in csv format as follows: “id,first_name,last_name,title\n”
@@ -41,5 +43,5 @@ ArrayBag <CourseMember> removeCourseMemberFromBag(const CourseMember& member);
 
 };
 
-// #include "BagTest.cpp"
+//#include "BagTest.cpp"
 #endif

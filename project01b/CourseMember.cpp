@@ -7,9 +7,9 @@
  
 
 #include "CourseMember.hpp"
-CourseMember::CourseMember(){
+ CourseMember::CourseMember(){
     
-}
+ }
 
 CourseMember::CourseMember(int id, std::string first, std::string last){
     /* param id    the student's unique identifier
