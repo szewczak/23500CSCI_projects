@@ -1,6 +1,6 @@
 //  Created by Frank M. Carrano and Timothy M. Henry.
 //  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
-//  Modified by Tiziana Ligorio 2019 for CSCI 235 Hunter College
+//  Modified by Tiziana Ligorio 2019 for CSCI 235 H`ter College
 
 /** @file Node.h
     Listing 4-1 */

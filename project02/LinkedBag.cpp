@@ -9,14 +9,10 @@
 #include "Node.hpp"
 #include <cstddef>
 
-template<class T>
-LinkedBag<T>::LinkedBag() : head_ptr_(nullptr), item_count_(0)
-{
+template<class T>LinkedBag<T>::LinkedBag() : head_ptr_(nullptr), item_count_(0){
 }  // end default constructor
 
-template<class T>
-LinkedBag<T>::LinkedBag(const LinkedBag<T>& a_bag)
-{
+template<class T>LinkedBag<T>::LinkedBag(const LinkedBag<T>& a_bag){
 	item_count_ = a_bag.item_count_;
    Node<T>* orig_chain_ptr = a_bag.head_ptr_;  // Points to nodes in original chain
 
@@ -54,49 +50,34 @@ LinkedBag<T>::LinkedBag(const LinkedBag<T>& a_bag)
    }  // end if
 }  // end copy constructor
 
-template<class T>
-LinkedBag<T>::~LinkedBag()
-{
+template<class T>LinkedBag<T>::~LinkedBag(){
    clear();
 }  // end destructor
 
 
-template<class T>
-LinkedBag<T> LinkedBag<T>::bagUnion(const LinkedBag<T>& a_bag) const{
+template<class T>LinkedBag<T> LinkedBag<T>::bagUnion(const LinkedBag<T>& a_bag) const{
    //@param a_bag to be combined with the contents of this (the calling) bag
    //@return a new LinkedBag that contains all elements from this bag (items_)and from a_bag. Note that it may contain duplicates
-   LinkedBag<T> b_bag(a_bag); 
+   LinkedBag<T> b_bag(a_bag);          // return bag. Add a_bag to it on creation
+   Node<T>* cur_ptr = head_ptr_;       // keeping track of currnet THIS.ptr
+
+   while(cur_ptr != nullptr){          // loop through all items in THIS bag
+      // b_bag.add(cur_ptr);             // add node to b_bag
+      cur_ptr = cur_ptr->getNext();    // move current ptr forward
+   }
    return b_bag;
-
-} 
-
+}
 
 
-
-
-
-
-
-
-
-
-
-
-template<class T>
-bool LinkedBag<T>::isEmpty() const
-{
+template<class T>bool LinkedBag<T>::isEmpty() const{
 	return item_count_ == 0;
 }  // end isEmpty
 
-template<class T>
-int LinkedBag<T>::getCurrentSize() const
-{
+template<class T>int LinkedBag<T>::getCurrentSize() const{
     return item_count_;
 }  // end getCurrentSize
 
-template<class T>
-bool LinkedBag<T>::add(const T& new_entry)
-{
+template<class T>bool LinkedBag<T>::add(const T& new_entry){
    // Add to beginning of chain: new node references rest of chain;
    // (head_ptr_ is null if chain is empty)
    Node<T>* next_node_ptr = new Node<T>();
@@ -111,9 +92,7 @@ bool LinkedBag<T>::add(const T& new_entry)
 }  // end add
 
 
-template<class T>
-std::vector<T> LinkedBag<T>::toVector() const
-{
+template<class T>std::vector<T> LinkedBag<T>::toVector() const{
    std::vector<T> bag_contents;
    Node<T>* cur_ptr = head_ptr_;
 	while ((cur_ptr != nullptr))
@@ -125,9 +104,7 @@ std::vector<T> LinkedBag<T>::toVector() const
    return bag_contents;
 }  // end toVector
 
-template<class T>
-bool LinkedBag<T>::remove(const T& an_entry)
-{
+template<class T>bool LinkedBag<T>::remove(const T& an_entry){
    Node<T>* entry_node_ptr = getPointerTo(an_entry);
    bool can_remove = !isEmpty() && (entry_node_ptr != nullptr);
    if (can_remove)
@@ -151,9 +128,7 @@ bool LinkedBag<T>::remove(const T& an_entry)
 }  // end remove
 
 
-template<class T>
-void LinkedBag<T>::clear()
-{
+template<class T>void LinkedBag<T>::clear(){
    Node<T>* node_to_delete = head_ptr_;
    while (head_ptr_ != nullptr)
    {
@@ -171,9 +146,7 @@ void LinkedBag<T>::clear()
 }  // end clear
 
 
-template<class T>
-int LinkedBag<T>::getFrequencyOf(const T& an_entry) const
-{
+template<class T>int LinkedBag<T>::getFrequencyOf(const T& an_entry) const{
 	int frequency = 0;
    int counter = 0;
    Node<T>* cur_ptr = head_ptr_;
@@ -191,9 +164,7 @@ int LinkedBag<T>::getFrequencyOf(const T& an_entry) const
 	return frequency;
 }  // end getFrequencyOf
 
-template<class T>
-bool LinkedBag<T>::contains(const T& an_entry) const
-{
+template<class T>bool LinkedBag<T>::contains(const T& an_entry) const{
 	return (getPointerTo(an_entry) != nullptr);
 }  // end contains
 
@@ -207,8 +178,7 @@ bool LinkedBag<T>::contains(const T& an_entry) const
  @return Returns either a pointer to the node containing a given entry
  or the null pointer if the entry is not in the bag.
  */
-template<class T>
-Node<T>* LinkedBag<T>::getPointerTo(const T& an_entry) const
+template<class T>Node<T>* LinkedBag<T>::getPointerTo(const T& an_entry) const
 {
     bool found = false;
     Node<T>* cur_ptr = head_ptr_;
