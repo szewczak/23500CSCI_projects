@@ -60,6 +60,28 @@ LinkedBag<T>::~LinkedBag()
    clear();
 }  // end destructor
 
+
+template<class T>
+LinkedBag<T> LinkedBag<T>::bagUnion(const LinkedBag<T>& a_bag) const{
+   //@param a_bag to be combined with the contents of this (the calling) bag
+   //@return a new LinkedBag that contains all elements from this bag (items_)and from a_bag. Note that it may contain duplicates
+   LinkedBag<T> b_bag(a_bag); 
+   return b_bag;
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
 template<class T>
 bool LinkedBag<T>::isEmpty() const
 {
