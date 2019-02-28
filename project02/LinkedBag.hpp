@@ -28,7 +28,7 @@ public:
     bool contains(const T& an_entry) const;
     int getFrequencyOf(const T& an_entry) const;
     std::vector<T> toVector() const;
-
+    // void LinkedBag<T>::removeDuplicates();
     // ASSIGNMENT ITEMS 
     /**
      @param a_bag to be combined with the contents of this (the calling) bag
@@ -36,37 +36,37 @@ public:
      */
     LinkedBag<T> bagUnion(const LinkedBag<T>& a_bag) const; 
 
-// /**
-    //  @param a_bag to be intersected with the contents of this (the calling) bag
-    //  @return a new LinkedBag that contains the intersection of the contents of this bag and those of the argument a_bag. This intersection does not contain duplicates (e.g. every element occurring in BOTH bags will be found only once in the intersection, no matter how many occurrences in the original bags) as in set intersection A ∩ B
-    //  */
+    /**
+     @param a_bag to be intersected with the contents of this (the calling) bag
+     @return a new LinkedBag that contains the intersection of the contents of this bag and those of the argument a_bag. This intersection does not contain duplicates (e.g. every element occurring in BOTH bags will be found only once in the intersection, no matter how many occurrences in the original bags) as in set intersection A ∩ B
+     */
     // LinkedBag<T> bagIntersectionNoDuplicates(const LinkedBag<T>& a_bag)const;
 
-    // /**
-    //  @param a_bag to be subtracted from this bag
-    //  @return a new LinkedBag that contains only those items that occur in this bag or in a_bag but not in both, and it does not contain duplicates
-    //  */
+    /**
+     @param a_bag to be subtracted from this bag
+     @return a new LinkedBag that contains only those items that occur in this bag or in a_bag but not in both, and it does not contain duplicates
+     */
     // LinkedBag<T> bagDifference(const LinkedBag<T>& a_bag) const;
 
-    // /**
-    //  @param a_bag whose contents are to be copied to this (the calling) bag
-    //  @post this (the calling) bag has same contents as a_bag
-    //  */
+    /**
+     @param a_bag whose contents are to be copied to this (the calling) bag
+     @post this (the calling) bag has same contents as a_bag
+     */
     // void operator= (const LinkedBag<T>& a_bag);
 
-    // /**
-    //  @param new_entry to be added to the bag
-    //  @post new_entry is added at the end of the chain preserving the order of items in the bag
-    //  @return true if added successfully, false otherwise
-    //  */
+    /**
+     @param new_entry to be added to the bag
+     @post new_entry is added at the end of the chain preserving the order of items in the bag
+     @return true if added successfully, false otherwise
+     */
     // bool addToEnd(const T& new_entry); 
 
-    // /**
-    //  @param an_entry to be removed from the bag
-    //  @post the first occurrence of an_entry starting from the head node is removed from the chain preserving the order of the remaining items in the bag
-    //  @return true if removed successfully, false otherwise
-    //  */
-    // bool removeRetainOrder(const T& an_entry);
+    /**
+     @param an_entry to be removed from the bag
+     @post the first occurrence of an_entry starting from the head node is removed from the chain preserving the order of the remaining items in the bag
+     @return true if removed successfully, false otherwise
+     */
+    bool removeRetainOrder(const T& an_entry);
 
 private:
     Node<T>* head_ptr_;     // Pointer to first node
