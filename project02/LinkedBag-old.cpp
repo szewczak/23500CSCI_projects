@@ -1,12 +1,15 @@
-//  Created by Frank M. Carrano and Timothy M. Henry.
-//  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
+//  Created by Frank M. Carrano and Timothy M. Henry.
+//  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
 //  Modified by Tiziana Ligorio 2019 for CSCI 235 Hunter College
+
 /** ADT bag: Link-based implementation.
     @file LinkedBag.cpp */
+
 #include "LinkedBag.hpp"
 #include "Node.hpp"
 #include <cstddef>
 // #include <iostream>
+
 template<class T>
 LinkedBag<T>::LinkedBag() : head_ptr_(nullptr), item_count_(0){
 }  // end default constructor
@@ -163,6 +166,26 @@ bool LinkedBag<T>::contains(const T& an_entry) const{
 }  // end contains
 
 
+
+
+// template<class T>
+// void LinkedBag<T>::retainOnlyUnique(){
+ //    Node<T>* cur_ptr = head_ptr_; // keeping track of currnet THIS.ptr
+ //    Node<T>* prv_ptr = head_ptr_; // keeping track of previous THIS.ptr
+ //    while(cur_ptr != nullptr){    // if item is unique jump to next, else remove
+ //                                  // item and jump back to previous, keep loping 
+ //       if(getFrequencyOf(cur_ptr->getItem()) == 1){ // item is unique
+ //          prv_ptr = cur_ptr;      // retain pervious ptr before jump
+ //          cur_ptr = cur_ptr->getNext();     // cur -> next item
+ //       }
+ //       else{                      // we need to remove this line
+ //          removeRetainOrder(cur_ptr->getItem()); // remove cur.getitem
+ //          cur_ptr = prv_ptr->getNext();                     // cur <- previous
+ //       }
+    
+ //    }
+// }
+
 template<class T>
 LinkedBag<T> LinkedBag<T>::bagUnion(const LinkedBag<T>& a_bag) const{
    //@param a_bag to be combined with the contents of this (the calling) bag
@@ -216,6 +239,7 @@ template<class T>
 void LinkedBag<T>::operator= (const LinkedBag<T>& a_bag){
    clear();
    std::vector<T> bag_contents = a_bag.toVector();
+
    for(int i=0; i < a_bag.getCurrentSize(); i++){
       add(bag_contents[i]);
    }
@@ -223,81 +247,44 @@ void LinkedBag<T>::operator= (const LinkedBag<T>& a_bag){
 
 template<class T>
 bool LinkedBag<T>::addToEnd(const T& new_entry){
-   Node<T>* cur_ptr = head_ptr_;
-   // Node<T>* prv_ptr = head_ptr_;
-   Node<T>* last_node_ptr = new Node<T>();
-   last_node_ptr->setItem(new_entry);
-   last_node_ptr->setNext(nullptr);
-
-   while(cur_ptr->getNext() !=nullptr){
-      // prv_ptr = cur_ptr;
-      cur_ptr = cur_ptr->getNext();
-   }
-
-   cur_ptr->setNext(last_node_ptr);
-
-   item_count_++;
-
-   return true;
+   return true; //stub
 }
-    
 
-//     Node<T>* ptr_a;
-//     ptr_a->setItem(new_entry);
-    
-//     Node<T>* ptr_b; //needs to point to the last item in the node
-
-   
-
-//     while(ptr_a->getNext() != nullptr)
-//     {
-//       ptr_a = ptr_a->getNext();
-//     }
-
-  
-//     ptr_b->setNext(ptr_a);
-//     item_count_++;
-
-//     return true;
-
-//  } //end addToEnd 
-
-
-// template<class T>
-// bool LinkedBag<T>::removeRetainOrder(const T& an_entry){
- //    Node<T>* cur_ptr = head_ptr_;
- //    Node<T>* prv_ptr = head_ptr_;
- //    Node<T>* tmp_ptr = nullptr;
-    
- //    if((cur_ptr->getItem() == an_entry) && (cur_ptr == head_ptr_)){
- //       tmp_ptr = cur_ptr->getNext();         // two line step for clarity
- //       head_ptr_ = tmp_ptr;
- //       delete cur_ptr;
- //       item_count_--;
- //       cur_ptr = nullptr;
- //       prv_ptr = nullptr;
- //       tmp_ptr = nullptr;
- //       return true;
- //    }
- //    while(cur_ptr != nullptr){
- //       if(cur_ptr->getItem() == an_entry){
- //          tmp_ptr = cur_ptr->getNext();         // two line step for clarity
- //          prv_ptr->setNext(tmp_ptr);            // previous element now points to next elment
- //          delete cur_ptr;
- //          cur_ptr = nullptr;
- //          prv_ptr = nullptr;
- //          tmp_ptr = nullptr;
- //          item_count_--;
- //          return true;                           // we don't need to keep managing ptrs anymore. we are done
- //       }
- //       prv_ptr = cur_ptr;                        // retain prev ptr
- //       cur_ptr = cur_ptr->getNext();             // move current ptr forward
- //    }
- //    cur_ptr = nullptr;
- //    prv_ptr = nullptr;
- //    tmp_ptr = nullptr;
- //    return false;
-// }
+template<class T>
+bool LinkedBag<T>::removeRetainOrder(const T& an_entry){
+   Node<T>* cur_ptr = head_ptr_;                // keeping track of currnet THIS.ptr
+   Node<T>* prv_ptr = head_ptr_;                // keeping track of last THIS.ptr
+   Node<T>* tmp_ptr = nullptr;                 // grabbing the after remove item
+   //Edge case, head item to be removed
+   if((cur_ptr->getItem() == an_entry) && (cur_ptr == head_ptr_)){
+      tmp_ptr = cur_ptr->getNext();         // two line step for clarity
+      head_ptr_ = tmp_ptr;
+      delete cur_ptr;
+      item_count_--;
+      cur_ptr = nullptr;
+      prv_ptr = nullptr;
+      tmp_ptr = nullptr;
+      return true;
+   }
+   while(cur_ptr != nullptr){        // loop through all items in THIS bag
+      if(cur_ptr->getItem() == an_entry){
+         tmp_ptr = cur_ptr->getNext();         // two line step for clarity
+         prv_ptr->setNext(tmp_ptr);            // previous element now points to next elment
+         delete cur_ptr;
+         cur_ptr = nullptr;
+         prv_ptr = nullptr;
+         tmp_ptr = nullptr;
+         item_count_--;
+         return true;                           // we don't need to keep managing ptrs anymore. we are done
+      }
+      prv_ptr = cur_ptr;                        // retain prev ptr
+      cur_ptr = cur_ptr->getNext();             // move current ptr forward
+   }
+   cur_ptr = nullptr;
+   prv_ptr = nullptr;
+   tmp_ptr = nullptr;
+   return false;
+}
 
 // private
 
