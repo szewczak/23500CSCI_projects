@@ -70,9 +70,9 @@ int main(){
     //     cout << vector_bag_1[i] << ", ";
     // }
 
-    cout << "\n\naddingEndBag, adding 99\n";
+    cout << "\n\nremoveRetainOrder, removing '8'\n";
     LinkedBag<int> addingEndBag = bag_1;
-    addingEndBag.addToEnd(99);
+    addingEndBag.removeRetainOrder(8);
     vector<int> vector_addingEndBag = addingEndBag.toVector();
     for(int i=0; i<addingEndBag.getCurrentSize();i++){
         cout << vector_addingEndBag[i] << ", ";

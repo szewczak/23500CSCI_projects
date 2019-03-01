@@ -65,7 +65,7 @@ public:
      @post the first occurrence of an_entry starting from the head node is removed from the chain preserving the order of the remaining items in the bag
      @return true if removed successfully, false otherwise
      */
-    // bool removeRetainOrder(const T& an_entry);
+    bool removeRetainOrder(const T& an_entry);
 
 private:
     Node<T>* head_ptr_;     // Pointer to first node

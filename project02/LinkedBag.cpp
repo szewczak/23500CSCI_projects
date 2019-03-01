@@ -242,62 +242,42 @@ bool LinkedBag<T>::addToEnd(const T& new_entry){
 }
     
 
-//     Node<T>* ptr_a;
-//     ptr_a->setItem(new_entry);
+
+template<class T>
+bool LinkedBag<T>::removeRetainOrder(const T& an_entry){
+    Node<T>* cur_ptr = head_ptr_;
+    Node<T>* prv_ptr = head_ptr_;
+    Node<T>* tmp_ptr = nullptr;
     
-//     Node<T>* ptr_b; //needs to point to the last item in the node
-
-   
-
-//     while(ptr_a->getNext() != nullptr)
-//     {
-//       ptr_a = ptr_a->getNext();
-//     }
-
-  
-//     ptr_b->setNext(ptr_a);
-//     item_count_++;
-
-//     return true;
-
-//  } //end addToEnd 
-
-
-// template<class T>
-// bool LinkedBag<T>::removeRetainOrder(const T& an_entry){
- //    Node<T>* cur_ptr = head_ptr_;
- //    Node<T>* prv_ptr = head_ptr_;
- //    Node<T>* tmp_ptr = nullptr;
-    
- //    if((cur_ptr->getItem() == an_entry) && (cur_ptr == head_ptr_)){
- //       tmp_ptr = cur_ptr->getNext();         // two line step for clarity
- //       head_ptr_ = tmp_ptr;
- //       delete cur_ptr;
- //       item_count_--;
- //       cur_ptr = nullptr;
- //       prv_ptr = nullptr;
- //       tmp_ptr = nullptr;
- //       return true;
- //    }
- //    while(cur_ptr != nullptr){
- //       if(cur_ptr->getItem() == an_entry){
- //          tmp_ptr = cur_ptr->getNext();         // two line step for clarity
- //          prv_ptr->setNext(tmp_ptr);            // previous element now points to next elment
- //          delete cur_ptr;
- //          cur_ptr = nullptr;
- //          prv_ptr = nullptr;
- //          tmp_ptr = nullptr;
- //          item_count_--;
- //          return true;                           // we don't need to keep managing ptrs anymore. we are done
- //       }
- //       prv_ptr = cur_ptr;                        // retain prev ptr
- //       cur_ptr = cur_ptr->getNext();             // move current ptr forward
- //    }
- //    cur_ptr = nullptr;
- //    prv_ptr = nullptr;
- //    tmp_ptr = nullptr;
- //    return false;
-// }
+    if((cur_ptr->getItem() == an_entry) && (cur_ptr == head_ptr_)){
+       tmp_ptr = cur_ptr->getNext();         // two line step for clarity
+       head_ptr_ = tmp_ptr;
+       delete cur_ptr;
+       item_count_--;
+       cur_ptr = nullptr;
+       prv_ptr = nullptr;
+       tmp_ptr = nullptr;
+       return true;
+    }
+    while(cur_ptr != nullptr){
+       if(cur_ptr->getItem() == an_entry){
+          tmp_ptr = cur_ptr->getNext();         // two line step for clarity
+          prv_ptr->setNext(tmp_ptr);            // previous element now points to next elment
+          delete cur_ptr;
+          cur_ptr = nullptr;
+          prv_ptr = nullptr;
+          tmp_ptr = nullptr;
+          item_count_--;
+          return true;                           // we don't need to keep managing ptrs anymore. we are done
+       }
+       prv_ptr = cur_ptr;                        // retain prev ptr
+       cur_ptr = cur_ptr->getNext();             // move current ptr forward
+    }
+    cur_ptr = nullptr;
+    prv_ptr = nullptr;
+    tmp_ptr = nullptr;
+    return false;
+}
 
 // private
 
