@@ -19,6 +19,7 @@ class TeachingAssistant: public Student
 {
 public:
     TeachingAssistant(int id, std::string first, std::string last);
+    void displayMember() const;
     int getHours() const;
     ta_role getRole() const;
     void setHours(const int hours);

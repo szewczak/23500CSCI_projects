@@ -16,6 +16,7 @@ class Instructor: public CourseMember
 {
 public:
     Instructor(int id, std::string first, std::string last);
+    void displayMember() const;
     std::string getOffice() const;
     std::string getContact() const;
     void setOffice(const std::string office);

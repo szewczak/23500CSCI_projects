@@ -7,11 +7,16 @@
 */ 
 
 #include "Student.hpp"
+#include <iostream>
 
 Student::Student(int id, std::string first, std::string last):CourseMember(id,first,last){}
 
 std::string Student::getMajor() const{
     return major_;
+}
+
+void Student::displayMember() const{
+    std::cout << getLastName() << " " << getFirstName() << " majors in " << getMajor() << " with gpa: " << getGpa() << std::endl;
 }
 
 double Student::getGpa() const{

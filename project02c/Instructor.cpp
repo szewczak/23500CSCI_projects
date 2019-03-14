@@ -7,8 +7,13 @@
 */ 
 
 #include "Instructor.hpp"
+#include <iostream>
 
 Instructor::Instructor(int id, std::string first, std::string last):CourseMember(id,first,last){}
+
+void Instructor::displayMember() const{
+    std::cout << getLastName() << " " << getFirstName() << " - office: " << getOffice() << ", email: " << getContact() << std::endl;
+}
 
 std::string Instructor::getOffice() const{
     return office_;
