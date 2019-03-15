@@ -24,7 +24,7 @@ public:
     
     
     //********** Accessor Methods ****************
-    virtual void displayMember() const = 0;
+    virtual void displayMember() const override;
     /** @return returns id_; */
     int getID() const;
     
