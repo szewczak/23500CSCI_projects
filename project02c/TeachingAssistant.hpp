@@ -13,7 +13,7 @@
 #include "CourseMember.hpp"
 #include "Student.hpp"
 
-enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, BOTH};
+enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, FULL_aSSISTANT};
 
 class TeachingAssistant: public Student
 {
