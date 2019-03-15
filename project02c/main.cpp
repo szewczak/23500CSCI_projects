@@ -4,27 +4,41 @@
 #include "Student.hpp"
 #include "TeachingAssistant.hpp"
 #include "Instructor.hpp"
-
+// imran
 
 using namespace std;
 
 
 int main(){
-    Student cat(01,"Mr.", "Fluffy");
-    cat.setGpa(3.2);
-    cat.setMajor("scowling");
-    cat.displayMember();
-    
-    TeachingAssistant dog(02, "Good", "Doggy");
-    dog.setGpa(4.0);
-    dog.setMajor("Branch_Managment");
-    dog.setRole(BOTH);
-    dog.displayMember();
+    CourseMember* genPointer;
 
-    Instructor wolf(03, "lady", "Wolf");
-    wolf.setContact("badWolf@dr.who");
-    wolf.setOffice("HN 443");
-    wolf.displayMember();
+    Student* cat = new Student(01,"Mr.", "Fluffy");
+    // cat->setGpa(3.2);
+    // cat->setMajor("scowling");
+    // cat.displayMember();
+    genPointer = cat;
+    genPointer->displayMember();
+    delete genPointer;
+    genPointer = nullptr;
+    
+    TeachingAssistant* dog = new TeachingAssistant(02, "Good", "Doggy");
+    // dog->setGpa(4.0);
+    // dog->setMajor("Branch_Managment");
+    // dog->setRole(BOTH);
+    // dog->displayMember();
+    genPointer = dog;
+    genPointer->displayMember();
+    delete genPointer;
+    genPointer = nullptr;
+
+    Instructor* wolf = new Instructor(03, "lady", "Wolf");
+    // wolf->setContact("badWolf@dr.who");
+    // wolf->setOffice("HN 443");
+    // wolf->displayMember();
+    genPointer = wolf;
+    genPointer->displayMember();
+    delete genPointer;
+    genPointer = nullptr;
 
     return 0;
 }

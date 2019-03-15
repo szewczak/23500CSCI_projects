@@ -19,7 +19,7 @@ class TeachingAssistant: public Student
 {
 public:
     TeachingAssistant(int id, std::string first, std::string last);
-    void displayMember() const;
+    void displayMember() const override;
     int getHours() const;
     ta_role getRole() const;
     void setHours(const int hours);
