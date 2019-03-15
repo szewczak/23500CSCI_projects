@@ -16,7 +16,7 @@ class Student: public CourseMember
 {
 public:
     Student(int id, std::string first, std::string last);
-    void displayMember() const;
+    void displayMember() override;
     std::string getMajor() const;
     double getGpa() const;
     void setMajor(const std::string major);

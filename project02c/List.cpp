@@ -2,12 +2,9 @@
 //  List.cpp
 //  List
 //
-//  Modified by David Yuen on 03/01/19 for CSCI 235 Project 2B
-//  Added function scanSublist(size_t position)
-//  Project 2B
 //  Created by Tiziana Ligorio on 10/21/18.
 //  Copyright © 2018 Tiziana Ligorio. All rights reserved.
-//  Changed > and < to >= and <= for Extra Credit
+//
 
 #include "List.hpp"
 
@@ -17,8 +14,7 @@ List<T>::List(): item_count_(0), first_(nullptr), last_(nullptr){} // constructo
 
 //copy constructor
 template<class T>
-List<T>::List(const List<T>& a_list)
-{
+List<T>::List(const List<T>& a_list) {
     item_count_ = a_list.item_count_;
     Node<T>* orig_chain_ptr = a_list.first_;  // Points to nodes in original chain
 
@@ -66,16 +62,22 @@ List<T>::List(const List<T>& a_list)
 
 // destructor 
 template<class T>
-List<T>::~List(){ clear();}
+List<T>::~List(){ 
+    clear();
+}
 
 /**@return true if list is empty - item_count_ == 0 */
 template<class T>
-bool List<T>::isEmpty() const{ return (item_count_ == 0);}
+bool List<T>::isEmpty() const{ 
+    return (item_count_ == 0);
+}
 
 
  /**@return the number of items in the list - item_count_ */
 template<class T>
-size_t List<T>::getLength() const{return item_count_;}
+size_t List<T>::getLength() const{
+    return item_count_;
+}
 
 
 /**
@@ -84,8 +86,7 @@ size_t List<T>::getLength() const{return item_count_;}
  @post new_element is added at position in list (before the node previously at that position)
  @return true always - it always inserts, if position > item_count_ it inserts at end of list */
 template<class T>
-bool List<T>::insert(size_t position, const T& new_element)
-{
+bool List<T>::insert(size_t position, const T& new_element) {
     // Create a new node containing the new entry and get a pointer to position
     Node<T>* new_node_ptr = new Node<T>(new_element);
     Node<T>* pos_ptr = getPointerTo(position);
@@ -138,8 +139,7 @@ bool List<T>::insert(size_t position, const T& new_element)
  @post node at position is deleted, if any. List order is retains
  @return true if ther eis a node at position to be deleted, false otherwise */
 template<class T>
-bool List<T>::remove(size_t position)
-{
+bool List<T>::remove(size_t position) {
     //get pointer to position
     Node<T>* pos_ptr = getPointerTo(position);
 
@@ -198,8 +198,7 @@ bool List<T>::remove(size_t position)
  @param position of item to be retrieved
  @return the item at position in list if there is one, otherwise it returns a dummy UNITIALIZED object of type T -- temporary suboptimal solution in place of error handling to be discussed later in the course  */
 template<class T>
-T List<T>::getItem(size_t position) const
-{
+T List<T>::getItem(size_t position) const {
     T dummy;
     Node<T>* pos_ptr = getPointerTo(position);
     if(pos_ptr != nullptr)
@@ -208,10 +207,10 @@ T List<T>::getItem(size_t position) const
         return dummy;
 }
 
+
 /**@post the list is empty and item_count_ == 0*/
 template<class T>
-void List<T>::clear()
-{
+void List<T>::clear() {
     Node<T>* node_to_delete = first_;
     while (first_ != nullptr)
     {
@@ -234,8 +233,7 @@ void List<T>::clear()
 //position follows classic indexing from 0 to item_count_-1
 //if position > item_count it returns nullptr
 template<class T>
-Node<T>* List<T>::getPointerTo(size_t position) const
-{
+Node<T>* List<T>::getPointerTo(size_t position) const {
 
     Node<T>* find = nullptr;
     if(position < item_count_)
@@ -254,19 +252,18 @@ Node<T>* List<T>::getPointerTo(size_t position) const
 //**** PROJECT-SPECIFIC METHODS ***//
 
 
+
 /**
  @pre assumes std::cout << is defined for objects of type T (can be sent to standard output) -- This method is not general, thus not appropriate for a templated class, it is provided for project debugging purposes
  @post traverses the list and prints (std::cout) every item in the list*/
 template<class T>
-void List<T>::traverse()
-{
+void List<T>::traverse() {
     for(Node<T>*  ptr = first_; ptr != nullptr; ptr = ptr->getNext())
     {
         std::cout << ptr->getItem() << " ";
     }
     std::cout << std::endl;
 }
-
 
 /**
 @pre assumes position is valid, if position is > item_count_ it returns an
@@ -277,67 +274,87 @@ last) sublist to be generated
 increasing items (first <= position <= last)
 */
 template<class T>
-List<T> List<T>::scanSublist(size_t position)
-{
-    List<T> final_list;                                 //Final list that will be returned
-
-    T start_item = getItem(position);                   //Item of start node
-
-    ///Returns an empty List<T> if the calling list is empty
-    if(isEmpty() || position > item_count_)
-        return final_list;
-
-    Node<T>* start_Node = getPointerTo(position);       //Position of node we're looking for
-    Node<T>* cycle_Node;                                //Node used to traverse list
-
-    final_list.insert(1, start_item);                   //Insert the item we are seraching for
-
-    /**
-     * Only done if original item is not at already end of list
-     * Because the original item at position is already inserted handled on line 293
-     */
-    if(start_Node->getNext() != NULL)
-    {
-        cycle_Node = start_Node;                        //At starting point      
-        int n_count = 2;                                //counter used to insert at next position
-
-        //Insert next item if next item is greater than current item AND not at end of list
-        while(cycle_Node->getNext()->getItem() >= cycle_Node->getItem() && cycle_Node->getNext()->getNext() != NULL)
-        {
-            final_list.insert(n_count,cycle_Node->getNext()->getItem());
-            cycle_Node = cycle_Node->getNext();         //traverses right
-            n_count++;
-        }
-
-        //EDGE CASE: item at end of list is greater than current item
-        if(cycle_Node->getNext()->getNext() == NULL && cycle_Node->getItem() >= cycle_Node->getPrevious()->getItem())
-        {
-            final_list.insert(n_count,cycle_Node->getNext()->getItem());
-        }
+List<T> List<T>::scanSublist(size_t position) {
+    List<T> newList;
+    Node<T>* dummyPointer = getPointerTo(position);  // Make a pointer to the position, this ptr will traverse the list
+    
+    // if position > item_count_, returns a newList
+    if (position > item_count_) {
+        return newList;
     }
     
-    /**
-     * Only done if original item is not at already beginning of list
-     * Because the original item at position is already inserted handled on line 293
-     */
-    if(start_Node->getPrevious() != NULL)
-    {
-        cycle_Node = start_Node->getPrevious();         //Starting point at node before original position
 
-        //Checks if current item is less than its next item(to the right)
-        while(cycle_Node->getItem() <= cycle_Node->getNext()->getItem() && cycle_Node->getPrevious() != NULL)
-        {
-            final_list.insert(0,cycle_Node->getItem());
-            cycle_Node = cycle_Node->getPrevious();     //traverses left
+
+    // If position is at the start of the list:
+    if (dummyPointer -> getPrevious() == nullptr) {
+        
+        newList.insert(newList.item_count_, dummyPointer -> getItem());
+        if (dummyPointer -> getNext() == nullptr) {
+            return newList;
+        }
+        dummyPointer = dummyPointer -> getNext();
+        
+        while ((dummyPointer -> getItem() > dummyPointer -> getPrevious() -> getItem()) ) { //while next ptr != null and n < n+1
+            newList.insert(newList.item_count_, dummyPointer -> getItem());
+            dummyPointer = dummyPointer -> getNext();
         }
 
-        //EDGE CASE: item at beginning of list is less than its next item
-        if(cycle_Node->getPrevious() == NULL && cycle_Node->getItem() <= cycle_Node->getNext()->getItem())
-        {
-            final_list.insert(0,cycle_Node->getItem());
-        }
+        return newList;
     }
 
-    //return List<T>
-    return final_list;
-}//return scanSublist
+
+    // Condition: position is at the end of the list
+    if (dummyPointer -> getNext() == nullptr) {
+        // Traversing the list to the left until at the start and as long as   n -1 < n
+        
+        while ((dummyPointer -> getItem() >= dummyPointer -> getPrevious() -> getItem()) ) { // if the preivous 
+            dummyPointer = dummyPointer -> getPrevious();
+        }
+
+        
+        newList.insert(newList.item_count_, dummyPointer -> getItem());
+
+        if (dummyPointer -> getNext() == nullptr) {
+            return newList;
+        }
+        dummyPointer = dummyPointer -> getNext();
+        
+        // Traversing right until while n < n+1
+        while ( (dummyPointer -> getItem() > dummyPointer -> getPrevious() -> getItem()) ) { //while next ptr != null and n < n+1
+            newList.insert(newList.item_count_, dummyPointer -> getItem());                 
+            if (dummyPointer -> getNext() == nullptr) {
+                return newList; 
+            }
+            dummyPointer = dummyPointer -> getNext();
+        }
+        
+        return newList;
+    }
+    
+
+    
+    // Condition: position is not at (Beginning and End) of the list 
+    // Traversing left, while n > n-1
+    
+    while ( (dummyPointer -> getPrevious() != nullptr) && (dummyPointer -> getItem() > dummyPointer -> getPrevious() -> getItem()) ) {
+        dummyPointer = dummyPointer -> getPrevious();
+    }
+    newList.insert(newList.item_count_, dummyPointer -> getItem());
+    if (dummyPointer -> getNext() == nullptr) {
+        return newList;
+    }
+    dummyPointer = dummyPointer -> getNext();
+
+    // Traversing right
+    while (dummyPointer -> getItem() > dummyPointer -> getPrevious() -> getItem()) {  //Comparing items
+        newList.insert(newList.item_count_, dummyPointer -> getItem());
+        if (dummyPointer -> getNext() == nullptr) {
+            return newList;
+        }
+        dummyPointer = dummyPointer -> getNext();
+    }
+    
+    return newList;
+    
+
+}

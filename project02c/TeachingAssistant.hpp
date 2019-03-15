@@ -13,13 +13,13 @@
 #include "CourseMember.hpp"
 #include "Student.hpp"
 
-enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, FULL_aSSISTANT};
+enum ta_role {LAB_ASSISTANT, LECTURE_ASSISTANT, FULL_ASSISTANT};
 
 class TeachingAssistant: public Student
 {
 public:
     TeachingAssistant(int id, std::string first, std::string last);
-    void displayMember() const override;
+    void displayMember() override;
     int getHours() const;
     ta_role getRole() const;
     void setHours(const int hours);

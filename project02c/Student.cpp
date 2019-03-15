@@ -15,8 +15,8 @@ std::string Student::getMajor() const{
     return major_;
 }
 
-void Student::displayMember() const{
-    std::cout << getLastName() << " " << getFirstName() << " majors in " << getMajor() << " with gpa: " << getGpa() << std::endl;
+void Student::displayMember(){
+    std::cout << getFirstName() << " " << getLastName() << " majors in " << getMajor() << " with gpa: " << getGpa() << "\n";
 }
 
 double Student::getGpa() const{

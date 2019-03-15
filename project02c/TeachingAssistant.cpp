@@ -14,8 +14,16 @@ TeachingAssistant::TeachingAssistant(int id, std::string first, std::string last
     role_ = LAB_ASSISTANT; //"You may assume for initialization purposes that the default role is LAB_ASSISTANT"
 }
 
-void TeachingAssistant::displayMember() const{
-    std::cout << getLastName() << " " << getFirstName() << " majors in " << getMajor() << " with gpa: " << getGpa() << " working [part-time/full-time] as a " << getRole() << std::endl;
+void TeachingAssistant::displayMember(){
+    std::string time;
+    if (getHours() > 8) time = "full-time";
+    else time = "part-time";
+    std::string role;
+    if(getRole() == 0)role =     "LAB_ASSISTANT";
+    if(getRole() == 1)role = "LECTURE_ASSISTANT";
+    if(getRole() == 2)role =    "FULL_ASSISTANT";
+    // Basnet Parakram majors in Computer Science with gpa: 1 working part-time as a LAB_ASSISTANT\n'
+    std::cout << getFirstName() << " " << getLastName() << " majors in " << getMajor() << " with gpa: " << getGpa() << " working " << time << " as a " << role << "\n";
 }
 
 

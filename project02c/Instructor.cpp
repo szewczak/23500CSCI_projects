@@ -11,8 +11,8 @@
 
 Instructor::Instructor(int id, std::string first, std::string last):CourseMember(id,first,last){}
 
-void Instructor::displayMember() const{
-    std::cout << getLastName() << " " << getFirstName() << " - office: " << getOffice() << ", email: " << getContact() << std::endl;
+void Instructor::displayMember(){
+    std::cout << getFirstName() << " " << getLastName() << " - office: " << getOffice() << ", email: " << getContact() << "\n";
 }
 
 std::string Instructor::getOffice() const{
