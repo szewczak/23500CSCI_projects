@@ -1,9 +1,8 @@
 //  Created by Frank M. Carrano and Timothy M. Henry.
 //  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
 //
-//  Modified by Tiziana Ligorio for Hunter College CSCI 235
-//  Removed Exception Handling becuse not yet covered and
 //  added Project3A specific methods
+//  Modified by Nick Szewczak for Hunter College CSCI 235 for assignment
 
 /** ADT list: Singly linked list implementation.
 
@@ -12,6 +11,7 @@
 
 #include "LinkedList.hpp"  // Header file
 #include <cassert>
+#include <iostream>
 
 template<class T>
 LinkedList<T>::LinkedList() : head_ptr_(nullptr), item_count_(0)
@@ -176,8 +176,14 @@ T LinkedList<T>::getEntry(int position) const
 //      the item previously at position 2 is at position item_count_-1 ...
 //      the item previously at position âŒŠitem_count/2âŒ‹ is at position âŒˆitem_count_/2âŒ‰
 
-
-
+template<class T>
+void LinkedList<T>::invert(){
+	if(!(head_ptr_==nullptr)){
+		Node<T>* m = head_ptr_;
+		invertRest(head_ptr_);
+		m->setNext(nullptr);
+	}
+}
 
 
 
@@ -215,6 +221,16 @@ Node<T>* LinkedList<T>::getNodeAt(int position) const
 //      the item previously at position âŒŠitem_count/2âŒ‹ is at position âŒˆitem_count_/2âŒ‰
 
 
+template<class T>
+void LinkedList<T>::invertRest(Node<T>* current_first_ptr){
+	if(current_first_ptr->getNext() == nullptr){							// IF the next node doesn't exist, this is the last node
+		head_ptr_ = current_first_ptr;										// set the head pointer to this last object, AND DO NOT RECURSE AGAIN
+	}
+	else{
+		invertRest(current_first_ptr->getNext());
+		current_first_ptr->getNext()->setNext(current_first_ptr);			// 
+	}
+}
 
 
 
