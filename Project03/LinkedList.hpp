@@ -39,8 +39,13 @@ public:
     //      the item previously at position 2 is at position item_count_-1 ...
     //      the item previously at position ⌊item_count/2⌋ is at position ⌈item_count_/2⌉
     void invert();
-
-
+	int minimum();
+	
+	// A wrapper to a recursive selection sort method that sorts the list in increasing order
+	// @post the contents of the list are sorted in increasing order such that
+	// the item at position 1 <= the item at at position 2 <= ...
+	// <= item at position item_count_-1
+	void selectionSort();																					//*******************
 
 private:
     Node<T>* head_ptr_; // Pointer to first node in the chain;
@@ -58,14 +63,23 @@ private:
 
        /***************** PROJECT-SPECIFIC PRIVATE METHODS ****************/
 
+	// recursive selection sort, used for safe programming to avoid
+	// exposing pointers to list in public methods
+	// To sort the list, it relies on re-linking the chain rather than copying data items
+	// @post the contents of the list are sorted in increasing order such that
+	// the item at position 1 <= the item at at position 2 <= ...
+	// <= item at position item_count_-1
+	int minimumPosition(Node<T>* current_first_ptr);
+	Node<T>* recursiveSelectionSort(Node<T>* current_first_ptr); 									//***************
+
+
     //recursively inverts the contents of he list, used for safe programming to avoid
     //exposing pointers to list in public methods
     // @post the contents of the list are inverted such that
     //      the item previously at position 1 is at position item_count_,
     //      the item previously at position 2 is at position item_count_-1 ...
     //      the item previously at position ⌊item_count/2⌋ is at position ⌈item_count_/2⌉
-    void invertRest(Node<T>* current_first_ptr);
-
+    void invertRest(Node<T>* current_first_ptr);														
 }; // end LinkedList
 
 #include "LinkedList.cpp"

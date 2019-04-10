@@ -177,6 +177,11 @@ T LinkedList<T>::getEntry(int position) const
 //      the item previously at position âŒŠitem_count/2âŒ‹ is at position âŒˆitem_count_/2âŒ‰
 
 template<class T>
+int LinkedList<T>::minimum(){
+	return minimumPosition(head_ptr_);
+}
+
+template<class T>
 void LinkedList<T>::invert(){
 	if(!(head_ptr_==nullptr)){
 		Node<T>* m = head_ptr_;
@@ -184,11 +189,6 @@ void LinkedList<T>::invert(){
 		m->setNext(nullptr);
 	}
 }
-
-
-
-
-
 
 /************* PRIVATE ************/
 
@@ -232,6 +232,33 @@ void LinkedList<T>::invertRest(Node<T>* current_first_ptr){
 	}
 }
 
+template<class T>
+int LinkedList<T>::minimumPosition(Node<T>* current_first_ptr){
+	Node<T>* itrPointer = current_first_ptr;
+	T minTemp;
+	int minIndex;
+	while(!itrPointer==nullptr){
+		if(minTemp >= *itrPointer){
+			minTemp = *itrPointer;
+			minIndex = i;
+		}
+		itrPointer = itrPointer->getNext();
+	}
+	return minIndex;
+}
+
+template<class T>
+void LinkedList<T>::selectionSort(){																			//***********************
+	if(!(head_ptr_==nullptr)){
+		recursiveSelectionSort(head_ptr_);
+	}
+}
+
+template<class T>
+Node<T>* LinkedList<T>::recursiveSelectionSort(Node<T>* current_first_ptr){										//***********************
+	//starting from current_first_ptr, 
+	return Node<T>*;
+}
 
 
 

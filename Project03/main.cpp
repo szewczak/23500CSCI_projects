@@ -16,8 +16,8 @@ int main (){
 	}
 	cout << "length is " << myListPtr->getLength() << endl;
 	cout << "\t calling invert()\n";
+	cout << "the minimum item is at " << myListPtr->minimumPosition() << endl;
 
-myListPtr->invert();
 myListPtr->invert();
 
 
