@@ -6,26 +6,50 @@ using namespace std;
 
 int main (){
 	//create a dummy list
-	LinkedList<string>* myListPtr = new LinkedList<string>;
-	for(int i=1; i<=10; i++){
-		myListPtr->insert((myListPtr->getLength()+1), (to_string(i)));
-	}
-		// print said dummy list
-	for(int i=1; i<=10; i++){
-		cout << "nth object is " << myListPtr->getEntry(i) << endl;
-	}
-	cout << "length is " << myListPtr->getLength() << endl;
-	cout << "\t calling invert()\n";
-	cout << "the minimum item is at " << myListPtr->minimumPosition() << endl;
+	LinkedList<int>* myListPtr = new LinkedList<int>;
+	
+	// for(int i=1; i<=10; i++){
+	// 	myListPtr->insert((myListPtr->getLength()+1), i);
+	// }
 
-myListPtr->invert();
+
+	// myListPtr->insert((myListPtr->getLength()+1), 5);
+	// myListPtr->insert((myListPtr->getLength()+1), 2);
+	// myListPtr->insert((myListPtr->getLength()+1), 6);
+	// myListPtr->insert((myListPtr->getLength()+1), 4);
+	// myListPtr->insert((myListPtr->getLength()+1), 0);
+	// myListPtr->insert((myListPtr->getLength()+1), 3);
+	// myListPtr->insert((myListPtr->getLength()+1), 1);
+
+	myListPtr->insert((myListPtr->getLength()+1), 0);
+	myListPtr->insert((myListPtr->getLength()+1), 1);
+	myListPtr->insert((myListPtr->getLength()+1), 2);
+	myListPtr->insert((myListPtr->getLength()+1), 3);
+	myListPtr->insert((myListPtr->getLength()+1), 4);
+	myListPtr->insert((myListPtr->getLength()+1), 5);
+	myListPtr->insert((myListPtr->getLength()+1), 6);
+
+
+
+	// cout << endl << "LinkedList contains: ";
+	// for(int i=0; i<myListPtr->getLength(); i++){
+ 	// 	cout << myListPtr->getEntry(i+1) << ", ";
+	// }
+
+	cout << (myListPtr->LLstatus()) << endl;
+	cout << endl << "~~~~~~~~~~~~~~~~" << endl << endl;
+
+	cout << "\t calling sort()\n";
+	// cout << "that item is " << myListPtr->
+
+	myListPtr->selectionSort();
 
 
 	//print said dummy list
-	for(int i=1; i<=10; i++){
-		cout << "nth object is " << myListPtr->getEntry(i) << endl;
+	for(int i=0; i<myListPtr->getLength(); i++){
+		cout << "nth object is " << myListPtr->getEntry(i+1) << endl;
 	}
-	cout << "length is " << myListPtr->getLength() << endl;
+	myListPtr->getLength();
 
 	return 0;
 }
