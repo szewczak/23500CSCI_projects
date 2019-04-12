@@ -1,13 +1,5 @@
-//  Created by Frank M. Carrano and Timothy M. Henry.
-//  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
-//
-//  Modified by Tiziana Ligorio for Hunter College CSCI 235
-//  Removed Exception Handling becuse not yet covered and
-//  added Project3A specific methods
+//  Modified by Nick Szewczak from assignment template, credit prof. Tiziana Ligorio
 
-/** ADT list: Singly linked list implementation.
-Listing 9-2.
-@file LinkedList.h */
 
 #ifndef LINKED_LIST_
 #define LINKED_LIST_
@@ -38,7 +30,6 @@ public:
 		//      the item previously at position 2 is at position item_count_-1 ...
 		//      the item previously at position ⌊item_count/2⌋ is at position ⌈item_count_/2⌉
 	// tl;dr private wrapper
-	int minimum();
 
 	void selectionSort();
 		// A wrapper to a recursive selection sort method that sorts the list in increasing order
@@ -77,7 +68,8 @@ private:
 
 	/***************** PROJECT-SPECIFIC PRIVATE METHODS ****************/
 
-	int minimumPosition();
+
+	int minimumPosition(Node<T>* current_first_ptr);
 	// index of the minimum item in LL
 	
 	Node<T>* recursiveSelectionSort(Node<T>* current_first_ptr);

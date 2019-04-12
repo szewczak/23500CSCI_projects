@@ -13,28 +13,28 @@ int main (){
 	// }
 
 
-	// myListPtr->insert((myListPtr->getLength()+1), 5);
-	// myListPtr->insert((myListPtr->getLength()+1), 2);
-	// myListPtr->insert((myListPtr->getLength()+1), 6);
-	// myListPtr->insert((myListPtr->getLength()+1), 4);
-	// myListPtr->insert((myListPtr->getLength()+1), 0);
-	// myListPtr->insert((myListPtr->getLength()+1), 3);
-	// myListPtr->insert((myListPtr->getLength()+1), 1);
-
-	myListPtr->insert((myListPtr->getLength()+1), 0);
-	myListPtr->insert((myListPtr->getLength()+1), 1);
-	myListPtr->insert((myListPtr->getLength()+1), 2);
-	myListPtr->insert((myListPtr->getLength()+1), 3);
-	myListPtr->insert((myListPtr->getLength()+1), 4);
 	myListPtr->insert((myListPtr->getLength()+1), 5);
+	myListPtr->insert((myListPtr->getLength()+1), 2);
 	myListPtr->insert((myListPtr->getLength()+1), 6);
+	myListPtr->insert((myListPtr->getLength()+1), 4);
+	myListPtr->insert((myListPtr->getLength()+1), 0);
+	myListPtr->insert((myListPtr->getLength()+1), 3);
+	myListPtr->insert((myListPtr->getLength()+1), 1);
+
+	// myListPtr->insert((myListPtr->getLength()+1), 0);
+	// myListPtr->insert((myListPtr->getLength()+1), 1);
+	// myListPtr->insert((myListPtr->getLength()+1), 2);
+	// myListPtr->insert((myListPtr->getLength()+1), 3);
+	// myListPtr->insert((myListPtr->getLength()+1), 4);
+	// myListPtr->insert((myListPtr->getLength()+1), 5);
+	// myListPtr->insert((myListPtr->getLength()+1), 6);
 
 
 
-	// cout << endl << "LinkedList contains: ";
-	// for(int i=0; i<myListPtr->getLength(); i++){
- 	// 	cout << myListPtr->getEntry(i+1) << ", ";
-	// }
+	cout << endl << "LinkedList contains: ";
+	for(int i=0; i<myListPtr->getLength(); i++){
+ 		cout << myListPtr->getEntry(i+1) << ", ";
+	}
 
 	cout << (myListPtr->LLstatus()) << endl;
 	cout << endl << "~~~~~~~~~~~~~~~~" << endl << endl;
