@@ -298,10 +298,5 @@ Node<T>* LinkedList<T>::recursiveSelectionSort(Node<T>* current_first_ptr){ // p
 }
 
 
-/*
-
-Node<T>* 
-
-*/
 
 //  End of implementation file.

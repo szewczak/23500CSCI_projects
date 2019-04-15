@@ -4,7 +4,6 @@
 	template for readMap(), getCity(), isRoute() provided by Professor Tiziana Ligorio
 */
 
-
 #ifndef City_
 #define City_
 #include <string>
@@ -12,49 +11,41 @@
 
 class City
 {
-public:
-/***************** Constructors ****************/
-City(std::string CityName);
+  public:
+	/***************** Constructors ****************/
+	City(std::string CityName);
 	// named node constructor
 
-
-/***************** Accessors ****************/
-bool cityVisited() const;
+	/***************** Accessors ****************/
+	bool cityVisited() const;
 	// visited accessor
 
-std::string cityName() const;
+	std::string cityName() const;
 	// city_node_ accessor
 
-std::vector<std::string> cityNeighbors();
+	std::vector<std::string> cityNeighbors();
 	// copy of city_edges_ vector
 
-/***************** Kitchen Sink ****************/
-bool addEdge(std::string const node);
+	/***************** Kitchen Sink ****************/
+	bool addEdge(std::string const node);
 	// add an edge connecting this node to other nodes.
 	// If connection already exists RETURN False.
 
-// bool travelTo(std::vector<std::string> CityBlacklist, std::string* targetPtr);
-// 	// finds next city to travel to. Returns True if there is an option.
-// 	// if city_edges_ contains an element NOT on CityBlacklist,
-// 	// targetPtr is updated with that city name
+	// bool travelTo(std::vector<std::string> CityBlacklist, std::string* targetPtr);
+	 // 	// finds next city to travel to. Returns True if there is an option.
+	 // 	// if city_edges_ contains an element NOT on CityBlacklist,
+	 // 	// targetPtr is updated with that city name
 
-private:
-
-std::string city_node_;
+  private:
+	std::string city_node_;
 	// Top Level ID for this city
-bool visited;
+	bool visited;
 	// memory for if this city has been traveled to previously.
 
-std::vector<std::string> city_edges_;
+	std::vector<std::string> city_edges_;
 	// Vector of city_nodes; that this object has access to.
-	// note std vectors from <vector> self destruct naturally 
-
+	// note std vectors from <vector> self destruct naturally
 };
 
 #include "City.cpp"
 #endif
-
-
-// MyClass::~MyClass {
-//     delete vec;
-// }

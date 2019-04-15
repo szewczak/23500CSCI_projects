@@ -3,27 +3,26 @@
 	By Nick Szewczak (nickszewczak.com)
 */
 
-
-
 #include <string>
 #include <vector>
-#include <iostream> 
+#include <iostream>
+#include <fstream>
 #include "City.hpp"
+#include "RouteMap.hpp"
 
 using namespace std;
 
-int main(){
+int main()
+{
 	cout << "test" << endl;
 	City bar("nyc");
 	bar.addEdge("dc");
 	bar.addEdge("hell");
 	vector<string> nearby = bar.cityNeighbors();
-	for(int i=0;i<nearby.size();i++){
+	for (int i = 0; i < nearby.size(); i++)
+	{
 		cout << nearby[i] << endl;
 	}
-
-
-
-
+	myRouteMap foo("test");
 	return 0;
 }

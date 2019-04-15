@@ -9,10 +9,6 @@
 #include <vector>
 #include <algorithm> 
 
-
-
-
-/***************** Constructors ****************/
 City::City(std::string CityName){
 	city_node_ = CityName;
 	visited = false;
@@ -41,23 +37,3 @@ bool City::addEdge(std::string const node){
 		return true;
 	}
 }
-
-// bool City::travelTo(std::vector<std::string> CityBlacklist, std::string* targetPtr){
-// 	for(int i=0; i<city_edges_.size();i++){
-// 		if(!(std::find(CityBlacklist.begin(), CityBlacklist.end(), city_edges_[i]) !=CityBlacklist.end())){
-// 			/* CityBlacklist does not contain an Edge */
-// 		}
-// 	}
-// /*
-// for( unsigned int i = 0; i < m_VectorOfInts.size(); i++ )
-// 			{
-// 				std::cout << "Element[" << i << "] = " << m_VectorOfInts[i] << std::endl;
-// 			}
-// 			std::cout << std::endl;
-// */
-// }
-
-
-
-	// LinkedList<T>::LinkedList() : head_ptr_(nullptr), item_count_(0){ // public function
-	// }  // end default constructor
