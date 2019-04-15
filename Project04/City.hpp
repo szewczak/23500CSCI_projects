@@ -20,7 +20,10 @@ class City
 	bool cityVisited() const;
 	// visited accessor
 
-	std::string cityName() const;
+	std::string getCityName() const;
+	// city_node_ accessor
+
+	std::string getCityEdges() const;
 	// city_node_ accessor
 
 	std::vector<std::string> cityNeighbors();

@@ -7,32 +7,55 @@
 #include "City.hpp"
 #include <string>
 #include <vector>
-#include <algorithm> 
+#include <algorithm>
 
-City::City(std::string CityName){
+City::City(std::string CityName)
+{
 	city_node_ = CityName;
 	visited = false;
 	city_edges_.clear();
 }
 
-bool City::cityVisited() const{
+bool City::cityVisited() const
+{
 	return visited;
 }
 
-std::string City::cityName() const{
+std::string City::getCityName() const
+{
 	return city_node_;
 }
 
-std::vector<std::string> City::cityNeighbors(){
+std::string City::getCityEdges() const
+{
+	std::string temp = "";
+	for (int i = 0; i < city_edges_.size(); i++)
+	{
+		if (i > 0)
+		{
+			temp = temp + ", ";
+		}
+		temp = temp + city_edges_[i];
+	}
+	return temp;
+}
+
+std::vector<std::string> City::cityNeighbors()
+{
 	return city_edges_;
 }
 
-bool City::addEdge(std::string const node){
-	if(std::find(city_edges_.begin(),city_edges_.end(), node) != city_edges_.end()){
+bool City::addEdge(std::string const node)
+{
+	// std::cout << "starting addEdge(" << node << ")" << std::endl;
+
+	if (std::find(city_edges_.begin(), city_edges_.end(), node) != city_edges_.end())
+	{
 		/*city_edges_ contains node*/
 		return false;
 	}
-	else{
+	else
+	{
 		city_edges_.push_back(node);
 		return true;
 	}
