@@ -20,6 +20,9 @@ bool City::cityVisited() const
 {
 	return visited;
 }
+void City::CityVisitedSet(bool state){
+	visited = state;
+}
 
 std::string City::getCityName() const
 {
@@ -35,17 +38,17 @@ std::string City::getCityEdges() const
 		{
 			temp = temp + ", ";
 		}
-		temp = temp + city_edges_[i];
+		temp = temp + city_edges_[i]->getCityName();
 	}
 	return temp;
 }
 
-std::vector<std::string> City::cityNeighbors()
+std::vector<City*> City::cityNeighbors()
 {
 	return city_edges_;
 }
 
-bool City::addEdge(std::string const node)
+bool City::addEdge(City* node)
 {
 	// std::cout << "starting addEdge(" << node << ")" << std::endl;
 
@@ -59,4 +62,7 @@ bool City::addEdge(std::string const node)
 		city_edges_.push_back(node);
 		return true;
 	}
+}
+void City::resetCity(){
+	visited = false;
 }

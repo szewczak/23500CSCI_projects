@@ -15,6 +15,7 @@ using namespace std;
 
 int main()
 {
+	// /*Simple testing*/
 	// cout << "test" << endl;
 	// City bar("nyc");
 	// bar.addEdge("dc");
@@ -24,8 +25,23 @@ int main()
 	// {
 	// 	cout << nearby[i] << endl;
 	// }
-	myRouteMap foo("linuxonly.csv");
+	RouteMap foo("linuxonly.csv");
 	cout << endl;
 	foo.allCitiesOut();
+	City * start = foo.getCityByName("A");
+		cout << "City* start is named `" << start->getCityName() << "`"<< endl;
+	City * end = foo.getCityByName("P");
+		cout << "City* end is named `" << end->getCityName() << "`"<< endl;
+	cout << "calling isRoute("<< start->getCityName() << ", " << end->getCityName() << ")";
+
+
+	if(foo.isRoute(start, end)){
+		cout << "\troute found" << endl;
+	}
+	else cout << "\tno route found" << endl;
 	return 0;
 }
+
+
+
+// /nL <- I <- H <- F <- C <- A

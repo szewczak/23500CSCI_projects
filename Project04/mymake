@@ -1,0 +1,8 @@
+#!bin/fish
+#simple make and run
+
+if g++ main.cpp
+	clear
+	cowsay "main.cpp"
+	./a.out
+end
