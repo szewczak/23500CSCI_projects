@@ -61,11 +61,12 @@ bool RouteMap::routeRecursive(City* origin, City* destination){
 
 std::string RouteMap::getCorrectRoute()
 {
-	std::string unReversed = "\n";
+	std::string unReversed = "";
 	for(int i = route_output_.length()-1; i >= 0; i--)
 	{
 		unReversed += route_output_[i];
 	}
+	unReversed += "\n";
 	return unReversed;
 }
 
